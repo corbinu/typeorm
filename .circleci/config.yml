@@ -7,7 +7,7 @@ jobs:
       # specify pre-built docker images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/node:10.15.0
-      - image: circleci/mysql:5.7.24
+      - image: mysql:5.7.24
       # - image: circleci/mariadb:10.1.37
       - image: circleci/postgres:9.6.11-postgis
       - image: circleci/mongo:3.4.18
@@ -35,7 +35,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # - run: docker-compose up -d
-        
+
       # run tests
       - run: npm run lint
       - run: npm test
