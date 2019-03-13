@@ -6,7 +6,7 @@
     "port": 3306,
     "username": "admin",
     "password": "test",
-    "database": "circle_test"
+    "database": "test"
   },
   {
     "skip": true,
