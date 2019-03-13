@@ -2,7 +2,7 @@
 .vscode/
 .idea/
 build/
-coverage/
+.nyc_output/
 node_modules/
 ormconfig.json
 ormlogs.log

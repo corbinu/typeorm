@@ -13,8 +13,6 @@ const mocha = require("gulp-mocha");
 const chai = require("chai");
 const tslint = require("gulp-tslint");
 const sourcemaps = require("gulp-sourcemaps");
-const istanbul = require("gulp-istanbul");
-const remapIstanbul = require("remap-istanbul/lib/gulpRemapIstanbul");
 const ts = require("gulp-typescript");
 const args = require("yargs").argv;
 
@@ -284,25 +282,6 @@ export class Gulpfile {
     }
 
     /**
-     * Runs before test coverage, required step to perform a test coverage.
-     */
-    @Task()
-    coveragePre() {
-        return gulp.src(["./build/compiled/src/**/*.js"])
-            .pipe(istanbul())
-            .pipe(istanbul.hookRequire());
-    }
-
-    /**
-     * Runs post coverage operations.
-     */
-    @Task()
-    coveragePost() {
-        return gulp.src(["./build/compiled/test/**/*.js"])
-            .pipe(istanbul.writeReports());
-    }
-
-    /**
      * Runs mocha tests.
      */
     @Task()
@@ -319,13 +298,6 @@ export class Gulpfile {
             }));
     }
 
-    @Task()
-    coverageRemap() {
-        return gulp.src("./coverage/coverage-final.json")
-            .pipe(remapIstanbul())
-            .pipe(gulp.dest("./coverage"));
-    }
-
     /**
      * Compiles the code and runs tests + makes coverage report.
      */
@@ -333,23 +305,6 @@ export class Gulpfile {
     tests() {
         return [
             "compile",
-            "coveragePre",
-            "runTests",
-            "coveragePost",
-            "coverageRemap"
-        ];
-    }
-
-    /**
-     * Runs tests, but creates a small delay before running them to make sure to give time for docker containers to be initialized.
-     */
-    @SequenceTask("ci-tests")
-    ciTests() {
-        return [
-            "clean",
-            "compile",
-            "tslint",
-            "wait",
             "coveragePre",
             "runTests",
             "coveragePost",
