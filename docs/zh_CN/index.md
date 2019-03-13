@@ -4,9 +4,6 @@
   </a>
   <br>
   <br>
-	<a href="https://travis-ci.org/typeorm/typeorm">
-		<img src="https://travis-ci.org/typeorm/typeorm.svg?branch=master">
-	</a>
 	<a href="https://badge.fury.io/js/typeorm">
 		<img src="https://badge.fury.io/js/typeorm.svg">
 	</a>
