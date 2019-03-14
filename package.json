@@ -57,6 +57,7 @@
     "@types/yargs": "^12.0.9",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "codecov": "^3.2.0",
     "del": "^4.0.0",
     "gulp": "^4.0.0",
     "gulp-mocha": "^6.0.0",
@@ -110,7 +111,7 @@
     ]
   },
   "scripts": {
-    "test-ci": "npm run test && nyc report--reporter = text - lcov > coverage.lcov && codecov",
+    "codecov": "nyc report --reporter=text-lcov > coverage.lcov",
     "test": "npm run compile && nyc mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/test",
     "test-fast": "mocha --file ./build/compiled/test/utils/test-setup.js --bail --recursive --timeout 60000 ./build/compiled/test",
     "compile": "rimraf ./build && tsc",

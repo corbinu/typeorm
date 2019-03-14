@@ -4,6 +4,7 @@
 build/
 .nyc_output/
 node_modules/
+coverage.lcov
 ormconfig.json
 ormlogs.log
 npm-debug.log

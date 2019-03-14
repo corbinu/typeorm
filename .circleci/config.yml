@@ -46,4 +46,5 @@ jobs:
       - run: npm test
 
       # run code coverage
+      - run: npm run codecov
       - run: curl -s https://codecov.io/bash | bash
